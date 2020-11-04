@@ -25,16 +25,17 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath/>
   </parent>
-  <artifactId>buildstack-maven-template-dependencies</artifactId>
+  <groupId>org.deepinthink.plasma</groupId>
+  <artifactId>plasma-broker-dependencies</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>BuildStack Maven Template Dependencies</name>
-  <description>BuildStack Maven Template Dependencies</description>
-  <url>https://github.com/deepinthink-buildstack/buildstack-maven-template</url>
+  <name>Plasma Broker Dependencies</name>
+  <description>Plasma Broker Dependencies</description>
+  <url>https://github.com/deepinthink-plasma/plasma-broker</url>
   <inceptionYear>2020</inceptionYear>
   <organization>
-    <name>DeepInThink BuildStack</name>
-    <url>https://github.com/deepinthink-buildstack</url>
+    <name>DeepInThink Plasma</name>
+    <url>https://github.com/deepinthink-plasma</url>
   </organization>
   <licenses>
     <license>
@@ -59,13 +60,13 @@
   </licenses>
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/deepinthink-buildstack/buildstack-maven-template/issues</url>
+    <url>https://github.com/deepinthink-plasma/plasma-broker/issues</url>
   </issueManagement>
   <developers>
     <developer>
-      <id>buildstack-maven-template-team</id>
-      <name>BuildStack Maven Template Team</name>
-      <url>https://github.com/deepinthink-buildstack/buildstack-maven-template/graphs/contributors</url>
+      <id>plasma-broker-team</id>
+      <name>Plasma Broker Team</name>
+      <url>https://github.com/deepinthink-plasma/plasma-broker/graphs/contributors</url>
     </developer>
   </developers>
   <build>

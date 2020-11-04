@@ -25,16 +25,17 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath/>
   </parent>
-  <artifactId>buildstack-maven-template</artifactId>
+  <groupId>org.deepinthink.plasma</groupId>
+  <artifactId>plasma-broker</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>BuildStack Maven Template</name>
-  <description>BuildStack Maven Template</description>
-  <url>https://github.com/deepinthink-buildstack/buildstack-maven-template</url>
+  <name>Plasma Broker</name>
+  <description>Plasma Broker</description>
+  <url>https://github.com/deepinthink-plasma/plasma-broker</url>
   <inceptionYear>2020</inceptionYear>
   <organization>
-    <name>DeepInThink BuildStack</name>
-    <url>https://github.com/deepinthink-buildstack</url>
+    <name>DeepInThink Plasma</name>
+    <url>https://github.com/deepinthink-plasma</url>
   </organization>
   <licenses>
     <license>
@@ -59,7 +60,7 @@
   </licenses>
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/deepinthink-buildstack/buildstack-maven-template/issues</url>
+    <url>https://github.com/deepinthink-plasma/plasma-broker/issues</url>
   </issueManagement>
   <developers>
     <developer>
@@ -76,26 +77,16 @@
       <timezone>+8</timezone>
     </developer>
   </developers>
-  <properties>
-    <spring-boot.version>2.2.10.RELEASE</spring-boot.version>
-  </properties>
   <modules>
-    <module>buildstack-maven-template-dependencies</module>
-    <module>buildstack-maven-template-docs</module>
-    <module>buildstack-maven-template-sample</module>
+    <module>plasma-broker-dependencies</module>
+    <module>plasma-broker-docs</module>
+    <module>plasma-broker-samples</module>
   </modules>
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.deepinthink.buildstack</groupId>
-        <artifactId>buildstack-maven-template-dependencies</artifactId>
+        <groupId>org.deepinthink.plasma</groupId>
+        <artifactId>plasma-broker-dependencies</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
