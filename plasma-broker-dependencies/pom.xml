@@ -69,6 +69,20 @@
       <url>https://github.com/deepinthink-plasma/plasma-broker/graphs/contributors</url>
     </developer>
   </developers>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.deepinthink.plasma</groupId>
+        <artifactId>plasma-broker-server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.deepinthink.plasma</groupId>
+        <artifactId>plasma-broker-starter-server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <build>
     <plugins>
       <plugin>

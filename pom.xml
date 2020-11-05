@@ -77,13 +77,25 @@
       <timezone>+8</timezone>
     </developer>
   </developers>
+  <properties>
+    <spring-boot.version>2.2.10.RELEASE</spring-boot.version>
+  </properties>
   <modules>
     <module>plasma-broker-dependencies</module>
     <module>plasma-broker-docs</module>
     <module>plasma-broker-samples</module>
+    <module>plasma-broker-server</module>
+    <module>plasma-broker-starter-server</module>
   </modules>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.deepinthink.plasma</groupId>
         <artifactId>plasma-broker-dependencies</artifactId>
