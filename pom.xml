@@ -81,11 +81,11 @@
     <spring-boot.version>2.2.10.RELEASE</spring-boot.version>
   </properties>
   <modules>
-    <module>plasma-broker-client</module>
+    <module>plasma-broker-client-core</module>
     <module>plasma-broker-dependencies</module>
     <module>plasma-broker-docs</module>
-    <module>plasma-broker-samples</module>
-    <module>plasma-broker-server</module>
+    <module>plasma-broker-server-core</module>
+    <module>plasma-broker-standalone-server</module>
     <module>plasma-broker-starter-client</module>
     <module>plasma-broker-starter-server</module>
   </modules>

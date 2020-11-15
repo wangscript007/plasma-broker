@@ -73,12 +73,12 @@
     <dependencies>
       <dependency>
         <groupId>org.deepinthink.plasma</groupId>
-        <artifactId>plasma-broker-client</artifactId>
+        <artifactId>plasma-broker-client-core</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.deepinthink.plasma</groupId>
-        <artifactId>plasma-broker-server</artifactId>
+        <artifactId>plasma-broker-server-core</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

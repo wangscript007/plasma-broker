@@ -24,22 +24,20 @@
     <artifactId>plasma-broker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>plasma-broker-starter-client</artifactId>
+  <artifactId>plasma-broker-client-core</artifactId>
   <packaging>jar</packaging>
-  <name>Plasma Broker Starter Client</name>
-  <description>Plasma Broker Starter Client</description>
+  <name>Plasma Broker Client Core</name>
+  <description>Plasma Broker Client Core</description>
   <dependencies>
-    <dependency>
-      <groupId>org.deepinthink.plasma</groupId>
-      <artifactId>plasma-broker-client-core</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot</artifactId>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>
+      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>
