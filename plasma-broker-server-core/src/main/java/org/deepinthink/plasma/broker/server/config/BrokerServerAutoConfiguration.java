@@ -16,11 +16,16 @@
 
 package org.deepinthink.plasma.broker.server.config;
 
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
+@AutoConfigureAfter({
+  BrokerConnectorServerConfiguration.class,
+  BrokerTransferServerConfiguration.class
+})
 @ConditionalOnBean(BrokerServerEnableMarkerConfiguration.EnableBrokerServerMarker.class)
 @EnableConfigurationProperties(BrokerServerProperties.class)
 public class BrokerServerAutoConfiguration {}

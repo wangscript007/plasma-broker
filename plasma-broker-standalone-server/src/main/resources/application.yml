@@ -1,0 +1,6 @@
+plasma:
+  broker:
+    server:
+      connector:
+        port: 9091
+        transport: TCP

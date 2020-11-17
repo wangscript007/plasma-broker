@@ -16,9 +16,54 @@
 
 package org.deepinthink.plasma.broker.server.config;
 
+import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer.Transport;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = BrokerServerProperties.PREFIX)
 public class BrokerServerProperties {
   public static final String PREFIX = "plasma.broker.server";
+
+  private final Connector connector = new Connector();
+  private final Transfer transfer = new Transfer();
+
+  public Connector getConnector() {
+    return connector;
+  }
+
+  public Transfer getTransfer() {
+    return transfer;
+  }
+
+  public static class Connector {
+    private int port;
+    private Transport transport;
+
+    public int getPort() {
+      return port;
+    }
+
+    public void setPort(int port) {
+      this.port = port;
+    }
+
+    public Transport getTransport() {
+      return transport;
+    }
+
+    public void setTransport(Transport transport) {
+      this.transport = transport;
+    }
+  }
+
+  public static class Transfer {
+    private int port;
+
+    public int getPort() {
+      return port;
+    }
+
+    public void setPort(int port) {
+      this.port = port;
+    }
+  }
 }
