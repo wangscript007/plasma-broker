@@ -14,43 +14,41 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.transfer;
+package org.deepinthink.plasma.broker.server.connector.context;
 
 import java.util.Objects;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.SmartLifecycle;
 
-public class BrokerTransferServerBootstrap
-    implements ApplicationEventPublisherAware, SmartLifecycle {
+public class ConnectorServerBootstrap implements ApplicationEventPublisherAware, SmartLifecycle {
+  private final ConnectorServer connectorServer;
+  private ApplicationEventPublisher eventPublisher;
 
-  private ApplicationEventPublisher appEventPublisher;
-
-  private final BrokerTransferServer transferServer;
-
-  public BrokerTransferServerBootstrap(BrokerTransferServerFactory factory) {
-    this.transferServer = Objects.requireNonNull(factory.createServer());
+  public ConnectorServerBootstrap(ConnectorServerFactory factory) {
+    this.connectorServer = Objects.requireNonNull(factory.createServer());
   }
 
   @Override
-  public void setApplicationEventPublisher(ApplicationEventPublisher appEventPublisher) {
-    this.appEventPublisher = appEventPublisher;
+  public void setApplicationEventPublisher(ApplicationEventPublisher eventPublisher) {
+    this.eventPublisher = eventPublisher;
   }
 
   @Override
   public void start() {
-    this.transferServer.start();
-    this.appEventPublisher.publishEvent(
-        new BrokerTransferServerInitializedEvent(this.transferServer));
+    this.connectorServer.start();
+    this.eventPublisher.publishEvent(new TransferServerInitializedEvent(this.connectorServer));
   }
 
   @Override
   public void stop() {
-    this.transferServer.stop();
+    this.connectorServer.stop();
   }
 
   @Override
   public boolean isRunning() {
-    return this.transferServer.address() != null;
+    return this.connectorServer.address() != null;
   }
 }

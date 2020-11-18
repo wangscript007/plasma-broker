@@ -1,3 +1,8 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 org.deepinthink.plasma.broker.server.config.BrokerServerAutoConfiguration
+
+# Application Context Initializers
+org.springframework.context.ApplicationContextInitializer=\
+org.deepinthink.plasma.broker.server.connector.context.ConnectorServerPortInfoApplicationContextInitializer,\
+org.deepinthink.plasma.broker.server.transfer.context.TransferServerPortInfoApplicationContextInitializer

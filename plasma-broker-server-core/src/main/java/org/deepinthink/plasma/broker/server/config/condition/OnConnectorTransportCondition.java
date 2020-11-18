@@ -18,7 +18,7 @@ package org.deepinthink.plasma.broker.server.config.condition;
 
 import java.util.Map;
 import org.deepinthink.plasma.broker.server.config.BrokerServerProperties;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer.Transport;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer.Transport;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage;
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
@@ -26,13 +26,13 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-final class OnBrokerConnectorTransportCondition extends SpringBootCondition {
+final class OnConnectorTransportCondition extends SpringBootCondition {
 
   @Override
   public ConditionOutcome getMatchOutcome(
       ConditionContext context, AnnotatedTypeMetadata metadata) {
     Map<String, Object> attributes =
-        metadata.getAnnotationAttributes(ConditionalOnBrokerConnectorTransport.class.getName());
+        metadata.getAnnotationAttributes(ConditionalOnConnectorTransport.class.getName());
     Transport transport = (Transport) attributes.get("transport");
     return getMatchOutcome(context.getEnvironment(), transport);
   }
@@ -40,7 +40,7 @@ final class OnBrokerConnectorTransportCondition extends SpringBootCondition {
   private ConditionOutcome getMatchOutcome(Environment environment, Transport transport) {
     String name = transport.name();
     ConditionMessage.Builder builder =
-        ConditionMessage.forCondition(ConditionalOnBrokerConnectorTransport.class);
+        ConditionMessage.forCondition(ConditionalOnConnectorTransport.class);
     String transportKey = BrokerServerProperties.PREFIX + ".connector.transport";
     return environment.containsProperty(transportKey)
             && environment.getProperty(transportKey).equalsIgnoreCase(name)

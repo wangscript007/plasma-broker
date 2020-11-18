@@ -14,8 +14,20 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.connector;
+package org.deepinthink.plasma.broker.server.transfer;
 
-public interface BrokerConnectorConfigurableServerFactory {
-  void setPort(int port);
+public class DefaultTransferServerFactory
+    implements TransferServerFactory, ConfigurableTransferServerFactory {
+
+  private int port;
+
+  @Override
+  public TransferServer createServer() {
+    return new DefaultTransferServer();
+  }
+
+  @Override
+  public void setPort(int port) {
+    this.port = port;
+  }
 }

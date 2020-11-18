@@ -16,12 +16,12 @@
 
 package org.deepinthink.plasma.broker.server.config;
 
-import org.deepinthink.plasma.broker.server.config.condition.ConditionalOnBrokerConnectorTransport;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer.Transport;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServerBootstrap;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServerFactory;
-import org.deepinthink.plasma.broker.server.connector.tcp.BrokerConnectorTcpServerFactory;
-import org.deepinthink.plasma.broker.server.connector.websocket.BrokerConnectorWebSocketServerFactory;
+import org.deepinthink.plasma.broker.server.config.condition.ConditionalOnConnectorTransport;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer.Transport;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServerFactory;
+import org.deepinthink.plasma.broker.server.connector.context.ConnectorServerBootstrap;
+import org.deepinthink.plasma.broker.server.connector.tcp.TcpConnectorServerFactory;
+import org.deepinthink.plasma.broker.server.connector.websocket.WebSocketConnectorServerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -36,31 +36,27 @@ public class BrokerConnectorServerConfiguration {
 
   @Bean
   @ConditionalOnMissingBean
-  public BrokerConnectorServerBootstrap brokerConnectorServerBootstrap(
-      BrokerConnectorServerFactory factory) {
-    return new BrokerConnectorServerBootstrap(factory);
+  public ConnectorServerBootstrap connectorServerBootstrap(ConnectorServerFactory factory) {
+    return new ConnectorServerBootstrap(factory);
   }
 
   @Bean
-  @ConditionalOnBrokerConnectorTransport(transport = Transport.TCP)
+  @ConditionalOnConnectorTransport(transport = Transport.TCP)
   @ConditionalOnMissingBean
-  public BrokerConnectorServerFactory brokerConnectorTcpServerFactory(
-      BrokerServerProperties properties) {
-    BrokerConnectorTcpServerFactory tcpServerFactory = new BrokerConnectorTcpServerFactory();
-    PropertyMapper propertyMapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
-    propertyMapper.from(properties.getConnector()::getPort).to(tcpServerFactory::setPort);
-    return tcpServerFactory;
+  public ConnectorServerFactory tcpConnectorServerFactory(BrokerServerProperties properties) {
+    TcpConnectorServerFactory factory = new TcpConnectorServerFactory();
+    PropertyMapper mapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
+    mapper.from(properties.getConnector()::getPort).to(factory::setPort);
+    return factory;
   }
 
   @Bean
-  @ConditionalOnBrokerConnectorTransport(transport = Transport.WEBSOCKET)
+  @ConditionalOnConnectorTransport(transport = Transport.WEBSOCKET)
   @ConditionalOnMissingBean
-  public BrokerConnectorServerFactory brokerConnectorWebSocketServerFactory(
-      BrokerServerProperties properties) {
-    BrokerConnectorWebSocketServerFactory webSocketServerFactory =
-        new BrokerConnectorWebSocketServerFactory();
-    PropertyMapper propertyMapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
-    propertyMapper.from(properties.getTransfer()::getPort).to(webSocketServerFactory::setPort);
-    return webSocketServerFactory;
+  public ConnectorServerFactory webSocketConnectorServerFactory(BrokerServerProperties properties) {
+    WebSocketConnectorServerFactory factory = new WebSocketConnectorServerFactory();
+    PropertyMapper mapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
+    mapper.from(properties.getTransfer()::getPort).to(factory::setPort);
+    return factory;
   }
 }

@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.transfer;
+package org.deepinthink.plasma.broker.server.config.condition;
 
-import java.net.InetSocketAddress;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer.Transport;
+import org.springframework.context.annotation.Conditional;
 
-final class BrokerTransferDefaultServer implements BrokerTransferServer {
-
-  @Override
-  public void start() {}
-
-  @Override
-  public void stop() {}
-
-  @Override
-  public InetSocketAddress address() {
-    return null;
-  }
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(OnConnectorTransportCondition.class)
+public @interface ConditionalOnConnectorTransport {
+  Transport transport();
 }

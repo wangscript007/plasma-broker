@@ -18,10 +18,16 @@ package org.deepinthink.plasma.broker.server.transfer;
 
 import java.net.InetSocketAddress;
 
-public interface BrokerTransferServer {
-  void start();
+final class DefaultTransferServer implements TransferServer {
 
-  void stop();
+  @Override
+  public void start() {}
 
-  InetSocketAddress address();
+  @Override
+  public void stop() {}
+
+  @Override
+  public InetSocketAddress address() {
+    return null;
+  }
 }

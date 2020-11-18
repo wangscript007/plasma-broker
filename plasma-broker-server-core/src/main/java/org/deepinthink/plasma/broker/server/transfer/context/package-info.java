@@ -14,8 +14,4 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.transfer;
-
-public interface BrokerTransferConfigurableServerFactory {
-  void setPort(int port);
-}
+package org.deepinthink.plasma.broker.server.transfer.context;

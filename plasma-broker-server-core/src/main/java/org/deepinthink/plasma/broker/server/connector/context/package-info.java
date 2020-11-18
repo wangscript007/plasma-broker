@@ -14,26 +14,4 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.connector.websocket;
-
-import java.net.InetSocketAddress;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer;
-
-final class BrokerConnectorWebSocketServer implements BrokerConnectorServer {
-
-  @Override
-  public void start() {}
-
-  @Override
-  public void stop() {}
-
-  @Override
-  public Transport transport() {
-    return Transport.WEBSOCKET;
-  }
-
-  @Override
-  public InetSocketAddress address() {
-    return null;
-  }
-}
+package org.deepinthink.plasma.broker.server.connector.context;

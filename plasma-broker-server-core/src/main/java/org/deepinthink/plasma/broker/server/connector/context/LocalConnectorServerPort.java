@@ -14,20 +14,17 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.config.condition;
+package org.deepinthink.plasma.broker.server.connector.context;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer.Transport;
-import org.springframework.context.annotation.Conditional;
+import org.springframework.beans.factory.annotation.Value;
 
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Conditional(OnBrokerConnectorTransportCondition.class)
-public @interface ConditionalOnBrokerConnectorTransport {
-  Transport transport();
-}
+@Value("${local.plasma.broker.connector.server.port}")
+public @interface LocalConnectorServerPort {}

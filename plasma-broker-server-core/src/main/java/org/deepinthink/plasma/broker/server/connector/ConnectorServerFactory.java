@@ -16,20 +16,6 @@
 
 package org.deepinthink.plasma.broker.server.connector;
 
-import org.springframework.context.ApplicationEvent;
-
-public class BrokerConnectorServerInitializedEvent extends ApplicationEvent {
-
-  BrokerConnectorServerInitializedEvent(Object source) {
-    super(source);
-  }
-
-  public BrokerConnectorServer getServer() {
-    return this.getSource();
-  }
-
-  @Override
-  public BrokerConnectorServer getSource() {
-    return (BrokerConnectorServer) super.getSource();
-  }
+public interface ConnectorServerFactory {
+  ConnectorServer createServer();
 }

@@ -14,24 +14,23 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.connector.tcp;
+package org.deepinthink.plasma.broker.server.connector.context;
 
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorConfigurableServerFactory;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServerFactory;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer;
+import org.springframework.context.ApplicationEvent;
 
-public class BrokerConnectorTcpServerFactory
-    implements BrokerConnectorServerFactory, BrokerConnectorConfigurableServerFactory {
+public class TransferServerInitializedEvent extends ApplicationEvent {
 
-  private int port;
+  TransferServerInitializedEvent(Object source) {
+    super(source);
+  }
 
-  @Override
-  public BrokerConnectorServer createServer() {
-    return new BrokerConnectorTcpServer();
+  public ConnectorServer getServer() {
+    return this.getSource();
   }
 
   @Override
-  public void setPort(int port) {
-    this.port = port;
+  public ConnectorServer getSource() {
+    return (ConnectorServer) super.getSource();
   }
 }

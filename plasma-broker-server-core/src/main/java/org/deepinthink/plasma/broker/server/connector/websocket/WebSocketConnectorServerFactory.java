@@ -16,18 +16,18 @@
 
 package org.deepinthink.plasma.broker.server.connector.websocket;
 
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorConfigurableServerFactory;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServerFactory;
+import org.deepinthink.plasma.broker.server.connector.ConfigurableConnectorServerFactory;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServerFactory;
 
-public class BrokerConnectorWebSocketServerFactory
-    implements BrokerConnectorServerFactory, BrokerConnectorConfigurableServerFactory {
+public class WebSocketConnectorServerFactory
+    implements ConnectorServerFactory, ConfigurableConnectorServerFactory {
 
   private int port;
 
   @Override
-  public BrokerConnectorServer createServer() {
-    return new BrokerConnectorWebSocketServer();
+  public ConnectorServer createServer() {
+    return new WebSocketConnectorServer();
   }
 
   @Override

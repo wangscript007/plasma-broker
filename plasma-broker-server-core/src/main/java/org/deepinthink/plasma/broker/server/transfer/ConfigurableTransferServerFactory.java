@@ -16,18 +16,6 @@
 
 package org.deepinthink.plasma.broker.server.transfer;
 
-public class BrokerTransferDefaultServerFactory
-    implements BrokerTransferServerFactory, BrokerTransferConfigurableServerFactory {
-
-  private int port;
-
-  @Override
-  public BrokerTransferServer createServer() {
-    return new BrokerTransferDefaultServer();
-  }
-
-  @Override
-  public void setPort(int port) {
-    this.port = port;
-  }
+public interface ConfigurableTransferServerFactory {
+  void setPort(int port);
 }

@@ -16,9 +16,9 @@
 
 package org.deepinthink.plasma.broker.server.config;
 
-import org.deepinthink.plasma.broker.server.transfer.BrokerTransferDefaultServerFactory;
-import org.deepinthink.plasma.broker.server.transfer.BrokerTransferServerBootstrap;
-import org.deepinthink.plasma.broker.server.transfer.BrokerTransferServerFactory;
+import org.deepinthink.plasma.broker.server.transfer.DefaultTransferServerFactory;
+import org.deepinthink.plasma.broker.server.transfer.TransferServerFactory;
+import org.deepinthink.plasma.broker.server.transfer.context.TransferServerBootstrap;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -33,17 +33,14 @@ public class BrokerTransferServerConfiguration {
 
   @Bean
   @ConditionalOnMissingBean
-  public BrokerTransferServerBootstrap brokerTransferServerBootstrap(
-      BrokerTransferServerFactory factory) {
-    return new BrokerTransferServerBootstrap(factory);
+  public TransferServerBootstrap brokerTransferServerBootstrap(TransferServerFactory factory) {
+    return new TransferServerBootstrap(factory);
   }
 
   @Bean
   @ConditionalOnMissingBean
-  public BrokerTransferServerFactory brokerTransferServerFactory(
-      BrokerServerProperties properties) {
-    BrokerTransferDefaultServerFactory defaultServerFactory =
-        new BrokerTransferDefaultServerFactory();
+  public TransferServerFactory brokerTransferServerFactory(BrokerServerProperties properties) {
+    DefaultTransferServerFactory defaultServerFactory = new DefaultTransferServerFactory();
     PropertyMapper propertyMapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
     propertyMapper.from(properties.getTransfer()::getPort).to(defaultServerFactory::setPort);
     return defaultServerFactory;

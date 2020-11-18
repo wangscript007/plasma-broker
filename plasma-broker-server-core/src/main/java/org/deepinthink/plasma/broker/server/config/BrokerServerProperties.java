@@ -16,7 +16,7 @@
 
 package org.deepinthink.plasma.broker.server.config;
 
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer.Transport;
+import org.deepinthink.plasma.broker.server.connector.ConnectorServer.Transport;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = BrokerServerProperties.PREFIX)

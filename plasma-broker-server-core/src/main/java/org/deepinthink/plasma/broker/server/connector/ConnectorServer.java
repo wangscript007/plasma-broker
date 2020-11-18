@@ -14,8 +14,23 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.transfer;
+package org.deepinthink.plasma.broker.server.connector;
 
-public interface BrokerTransferServerFactory {
-  BrokerTransferServer createServer();
+import java.net.InetSocketAddress;
+
+public interface ConnectorServer {
+  void start();
+
+  void stop();
+
+  InetSocketAddress address();
+
+  default Transport transport() {
+    return Transport.TCP;
+  }
+
+  enum Transport {
+    TCP,
+    WEBSOCKET,
+  }
 }

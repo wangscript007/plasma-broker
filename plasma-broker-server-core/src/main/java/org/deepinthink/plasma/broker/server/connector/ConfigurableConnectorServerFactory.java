@@ -14,21 +14,8 @@
  * limitations under the License.
  */
 
-package org.deepinthink.plasma.broker.server.connector.tcp;
+package org.deepinthink.plasma.broker.server.connector;
 
-import java.net.InetSocketAddress;
-import org.deepinthink.plasma.broker.server.connector.BrokerConnectorServer;
-
-final class BrokerConnectorTcpServer implements BrokerConnectorServer {
-
-  @Override
-  public void start() {}
-
-  @Override
-  public void stop() {}
-
-  @Override
-  public InetSocketAddress address() {
-    return null;
-  }
+public interface ConfigurableConnectorServerFactory {
+  void setPort(int port);
 }
